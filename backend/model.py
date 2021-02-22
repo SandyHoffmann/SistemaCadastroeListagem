@@ -1,4 +1,5 @@
 from config import *
+from config import db
 
 class EspacoCafe(db.Model):
     id = db.Column(db.Integer,primary_key=True)
@@ -9,7 +10,7 @@ class EspacoCafe(db.Model):
     def json(self):
         return {
             "id": self.id,
-            "nome_espaco": self.nome_espaco
+            "nome_espaco": self.nome_espaco,
         }
 
 class Sala(db.Model):
@@ -23,11 +24,12 @@ class Sala(db.Model):
         return {
             "id": self.id,
             "nome_sala": self.nome_sala,
-            "lotacao": self.lotacao
+            "lotacao": self.lotacao,
         }
 
 class Pessoa(db.Model):
     cpf = db.Column(db.String(10),primary_key=True)
+    fotoperfil = db.Column(db.String(40), nullable = False, default='imagens/fotopadrao.png')
     nome_pessoa = db.Column(db.String(40), nullable = False)
     sobrenome = db.Column(db.String(40), nullable = False)
     sala_um_id = db.Column(db.Integer,db.ForeignKey(Sala.id),nullable=False)
@@ -40,11 +42,12 @@ class Pessoa(db.Model):
     espacocafe_dois = db.relationship("EspacoCafe",foreign_keys=[espacocafe_dois_id])
 
     def __str__(self):
-        return self.cpf+", "+ self.nome_pessoa+", "+self.sobrenome
+        return self.cpf+", "+ self.nome_pessoa+", "+self.sobrenome+", "+self.fotoperfil+", "+str(self.sala_um_id)+", "+ self.sala_um+", " + str(self.sala_dois_id)+", "+ self.sala_dois +", "+str(self.espacocafe_um_id)+", "+ self.espacocafe_um+", "+str(self.espacocafe_dois_id)+", "+ self.espacocafe_dois
     
     def json(self):
         return {
-            "id": self.id,
+            "cpf": self.cpf,
+            "fotoperfil":self.fotoperfil,
             "nome_pessoa": self.nome_pessoa,
             "sobrenome": self.sobrenome,
             "sala_um_id": self.sala_um_id,
@@ -54,12 +57,11 @@ class Pessoa(db.Model):
             "espacocafe_um_id": self.espacocafe_um_id,
             "espacocafe_um":self.espacocafe_um.json(),
             "espacocafe_dois_id": self.espacocafe_dois_id,
-            "espacocafe_dois":self.espacocafe_dois.json()
+            "espacocafe_dois":self.espacocafe_dois.json(),
         }
 
 if __name__ == "__main__":
-
-
+    print(Pessoa.query.get("1234567890"))
 
 """    
     db.create_all()
@@ -86,5 +88,16 @@ if __name__ == "__main__":
     db.session.commit()
 
     print(Sala.query.get(4))
+
+    pessoa1 = Pessoa(cpf="1234567890",nome_pessoa="Amora",sobrenome="Amarantis",sala_um_id=1, sala_dois_id=2,espacocafe_um_id=1,espacocafe_dois_id=2)
+    pessoa2 = Pessoa(cpf="1234567891",nome_pessoa="Bernardo",sobrenome="Bastos",sala_um_id=2, sala_dois_id=1,espacocafe_um_id=2,espacocafe_dois_id=1)
+    pessoa3 = Pessoa(cpf="1234567892",nome_pessoa="Carlos",sobrenome="Castro",sala_um_id=3, sala_dois_id=4,espacocafe_um_id=3,espacocafe_dois_id=4)
+    pessoa4 = Pessoa(cpf="1234567893",nome_pessoa="Diane",sobrenome="Diavollo",sala_um_id=4, sala_dois_id=3,espacocafe_um_id=4,espacocafe_dois_id=3)
+    db.session.add(pessoa1)
+    db.session.add(pessoa2)
+    db.session.add(pessoa3)
+    db.session.add(pessoa4)
+    db.session.commit()
+    print(Pessoa.query.get("1234567890"))
 
 """
