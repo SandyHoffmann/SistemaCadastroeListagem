@@ -42,7 +42,7 @@ class Pessoa(db.Model):
     espacocafe_dois = db.relationship("EspacoCafe",foreign_keys=[espacocafe_dois_id])
 
     def __str__(self):
-        return self.cpf+", "+ self.nome_pessoa+", "+self.sobrenome+", "+self.fotoperfil+", "+str(self.sala_um_id)+", "+ self.sala_um+", " + str(self.sala_dois_id)+", "+ self.sala_dois +", "+str(self.espacocafe_um_id)+", "+ self.espacocafe_um+", "+str(self.espacocafe_dois_id)+", "+ self.espacocafe_dois
+        return str(self.cpf)+", "+ str(self.nome_pessoa)+", "+str(self.sobrenome)+", "+str(self.fotoperfil)+", "+str(self.sala_um_id)+", "+ str(self.sala_um)+", " + str(self.sala_dois_id)+", "+ str(self.sala_dois) +", "+str(self.espacocafe_um_id)+", "+ str(self.espacocafe_um)+", "+str(self.espacocafe_dois_id)+", "+ str(self.espacocafe_dois)
     
     def json(self):
         return {
@@ -61,7 +61,9 @@ class Pessoa(db.Model):
         }
 
 if __name__ == "__main__":
-    print(Pessoa.query.get("1234567890"))
+    sala = Sala(nome_sala="Sala 6",lotacao=1)
+    db.session.add(sala)
+    db.session.commit()
 
 """    
     db.create_all()

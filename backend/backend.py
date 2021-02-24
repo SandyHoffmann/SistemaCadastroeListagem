@@ -63,4 +63,65 @@ def incluir_pessoa():
     resposta.headers.add("Access-Control-Allow-Origin", "*") 
     return resposta
 
+@app.route("/verificandosalas")
+def verificardados():
+    salas = Sala.query.all()
+    listasalas=[]
+    salaspossiveis=[]
+    quantinicial=[]
+    for x in range(1,len(salas)+1):
+        lotacaocount=Sala.query.filter_by(id=x).first()
+        listasalas.append(lotacaocount.lotacao)
+    totalsalas=listasalas
+    print(totalsalas)
+    salaminimo=min(totalsalas) 
+    print(salaminimo) 
+    salamaximo=max(totalsalas)
+    print(salamaximo)
+    if salaminimo==salamaximo:
+        salaspossiveis=totalsalas
+    else:
+        for sala in totalsalas:
+            if sala == salaminimo:
+                salaspossiveis.append(sala)
+    possivel=salaspossiveis
+    print(possivel)
+    salasencaminhadas=[]
+    contador=1
+    for x in possivel:
+        sala=Sala.query.filter_by(id=contador,lotacao=x).first()
+        contador+=1
+        salasencaminhadas.append(sala)
+    listasalas=salasencaminhadas
+    salas = [ x.json() for x in listasalas ]
+    print(salas)
+    resposta = jsonify(salas)
+    resposta.headers.add("Access-Control-Allow-Origin", "*") 
+    return(resposta)
+
+@app.route("/verificarmetadepessoas")
+def verificarmetade():
+    listapessoas = Pessoa.query.all()
+    totalpessoas = len(listapessoas)
+    pessoaanterior = listapessoas[totalpessoas-1]
+    if pessoaanterior == None:
+        escolhasalas = 'escolha inicial'
+    else:
+        if totalpessoas>1:
+            pessoaanteanterior = listapessoas[totalpessoas-2]
+        if pessoaanterior.sala_um_id == pessoaanterior.sala_dois_id:
+            escolhasalas = 'salas diferentes'
+        elif pessoaanterior.sala_um_id != pessoaanterior.sala_dois_id and totalpessoas==1:
+            escolhasalas = 'salas iguais'
+        elif (pessoaanteanterior.sala_um_id == pessoaanteanterior.sala_dois_id):
+            escolhasalas = 'salas diferentes'
+        elif (pessoaanteanterior.sala_um_id != pessoaanteanterior.sala_dois_id):
+            escolhasalas = 'salas iguais'
+    escolhasalas=jsonify(escolhasalas)
+    return(escolhasalas)
+
+
+
+
 app.run(debug=True)
+verificardados()

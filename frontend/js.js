@@ -111,9 +111,8 @@ function listarsalaseespacos(combo_id,nome_classe) {
 }
 }
 
-function chamarsala() {
-    listarsalaseespacos("sala1id","Sala");
-    listarsalaseespacos("sala2id","Sala");
+function chamarsala(salaid,classe,numerosala,condicao) {
+    listarsalasdisponiveis(salaid,classe,numerosala,condicao);
 
 };
 
@@ -122,3 +121,89 @@ function chamarespaco() {
     listarsalaseespacos("espaco2id","EspacoCafe");
 
 };
+
+
+function listarsalasdisponiveis(combo_id,nome_classe,numerosala,condicao) {
+    $.ajax({
+        url: 'http://localhost:5000/verificandosalas',
+        method: 'GET',
+        dataType: 'json',
+        success: carregar,
+        error: function(problema) {
+            alert("erro, verifique backend  aaaaaaaaaa");
+        }
+    });
+    function carregar (dados) {
+        $('#'+combo_id).empty();
+        if (numerosala==1){
+            for (var i in dados) {
+                $('#'+combo_id).append(
+                    $('<option name='+dados[i].id+'></option>').attr("value", 
+                        dados[i].nome_sala).text(dados[i].nome_sala+' - lotação - '+dados[i].lotacao));
+                    }
+                }
+        else{
+            idsalaselecionada = $("#sala1id").find('option:selected').attr("name"); 
+            if (condicao =='salasdiferentes'){
+                    for (var i in dados) {
+                        if (dados[i].id != idsalaselecionada){
+                            $('#'+combo_id).append(
+                                $('<option name='+dados[i].id+'></option>').attr("value", 
+                                    dados[i].nome_sala).text(dados[i].nome_sala+' - lotação - '+dados[i].lotacao));
+                                }
+                        }
+                }
+            else{
+                for (var i in dados) {
+                    if (dados[i].id == idsalaselecionada){
+                    $('#'+combo_id).append(
+                        $('<option name='+dados[i].id+'></option>').attr("value", 
+                            dados[i].nome_sala).text(dados[i].nome_sala+' - lotação - '+dados[i].lotacao));
+                        }
+                    }
+                }
+                    
+        }
+        }
+}
+
+
+function verificar(){
+    $.ajax({
+        url: 'http://localhost:5000/verificarmetadepessoas',
+        method: 'GET',
+        dataType: 'json',
+        success: lendoresposta,
+        error: function(problema) {
+            alert("erro, verifique backend  aaaaaaaaaa");
+        }
+    });
+    function lendoresposta (escolhasalas) {
+        if (escolhasalas == 'salas diferentes'){
+            conteudo="<label for='sala1id' onClick=chamarsala('sala1id','Sala',1,'nenhum');>Salas Disponiveis - 1</label>"+
+                        "<select class='form-control' id='sala1id' value='sala1id' aria-describedby='sala1id' placeholder='sala1id' onClick=chamarsala('sala2id','Sala',2,'salasdiferentes'); >"+
+                        '</select>'+
+                        '<div class="form-group">'+
+                        '<label for="sala1id">Salas Disponiveis - 2</label>'+
+                        '<select class="form-control" id="sala2id" value="sala2id" aria-describedby="sala2id" placeholder="sala2id" >'+
+                        '</select>'+
+                        '</div>'
+
+            $('#teste').append( $(conteudo));
+            alert("deubom");
+        }
+        if (escolhasalas == 'salas iguais'){
+            conteudo="<label for='sala1id' onClick=chamarsala('sala1id','Sala',1,'nenhum');>Salas Disponiveis - 1</label>"+
+                        "<select class='form-control' id='sala1id' value='sala1id' aria-describedby='sala1id' placeholder='sala1id' onClick=chamarsala('sala2id','Sala',2,'salasiguais'); >"+
+                        '</select>'+
+                        '<div class="form-group">'+
+                        '<label for="sala1id">Salas Disponiveis - 2</label>'+
+                        '<select class="form-control" id="sala2id" value="sala2id" aria-describedby="sala2id" placeholder="sala2id" >'+
+                        '</select>'+
+                        '</div>'
+            $('#teste').append( $(conteudo));
+            alert("deubom");
+        }
+}
+}
+
