@@ -76,7 +76,6 @@ flask
 flask_sqlalchemy
 flask_cors
 pillow
-pytest
 ```
 <i>Trecho do requirements.txt</i>
 
