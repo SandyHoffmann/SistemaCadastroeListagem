@@ -58,6 +58,8 @@ card-deck{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     grid-gap: .5rem;
+    background-color: transparent;
+
 }
 #blocolistar{
     background-color: transparent;
@@ -115,4 +117,11 @@ card-deck{
     color: #000;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  #titulo{
+      text-align: center;
+      margin-top: 2%;
+      color: cornsilk;
+      background-color: rgb(39, 39, 39);
   }

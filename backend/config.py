@@ -1,4 +1,5 @@
-# importacoes para demais arquivos
+# importacoes para demais arquivos, importante!
+#aqui se encontra as importações, a aplicação, e o banco de dados!
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy 
 from flask_cors import CORS

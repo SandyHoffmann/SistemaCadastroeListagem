@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>treinamento</title>
+    <title>Treinamento</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -24,42 +24,36 @@
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Treinamentos</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="#">Treinamento</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
       </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="home.html">Home <span class="sr-only">(Página atual)</span></a>
+          </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="listar_pessoas.html">Pessoas</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Listar
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Listar Pessoas</a>
-              <a class="dropdown-item" href="#">Listar Salas</a>
-              <a class="dropdown-item" href="#">Listar Espaços Cafe</a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link" href="listar_salas.html">Salas</a>
           </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Cadastrar
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Cadastrar Pessoas</a>
-              <a class="dropdown-item" href="#">Cadastrar Salas</a>
-              <a class="dropdown-item" href="#">Cadastrar Espaços Cafe</a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link" href="listar_espacos.html">Espacos de Café</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cadastro_pessoas.html">Cadastrar Pessoas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cadastro_salas.html">Cadastrar Salas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cadastro_espacos_cafe.html">Cadastrar Espacos de Café</a>
           </li>
         </ul>
       </div>
     </nav>
-
     <main role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -68,7 +62,6 @@
           <img src="imagens/pc.png" alt="Computer" id="imgpc">
           <h1 class="display-3">Empresa Treinamentos</h1>
           <p>Ola participante! Se informe sobre sua sala na aba de Listagem de Pessoa, e fique a vontade para testar nosso sistema!</p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         </div>
       </div>
     </div>
@@ -78,17 +71,17 @@
           <div class="col-md-4">
             <h2>Cadastre-se hoje mesmo!</h2>
             <p>Faça o seu cadastro para participar do treinamento, precisamos definir em que Salas você vai ficar e em que espaços tomará seu cafézinho! </p>
-            <p><a class="btn btn-secondary" href="#" role="button">Ir para Cadastro de Pessoas &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="cadastro_pessoas.html" role="button">Ir para Cadastro de Pessoas &raquo;</a></p>
           </div>
           <div class="col-md-4">
             <h2>Inclua Salas de Café</h2>
             <p>Após um dia de treinamento, o melhor é tomar um cafézinho relaxado, né? Então inclua novos espaços para conhecer novos profissionais e compartilhar conhecimentos! </p>
-            <p><a class="btn btn-secondary" href="#" role="button">Ir para Cadastro de Espaços &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="cadastro_espacos_cafe.html" role="button">Ir para Cadastro de Espaços &raquo;</a></p>
           </div>
           <div class="col-md-4">
             <h2>Veja a sua Sala!</h2>
             <p>Fique de olho na sala selecionada para sua primeira e segunda fase! Consulte a aba de Participantes para saber mais!</p>
-            <p><a class="btn btn-secondary" href="#" role="button">Listar Participantes &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="listar_pessoas.html" role="button">Listar Participantes &raquo;</a></p>
           </div>
         </div>
 
@@ -113,9 +106,6 @@
       <p>&copy; Treinamentos</p>
     </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

@@ -1,6 +1,7 @@
 from config import *
 from config import db
 
+#Classe Espaco café, possui apenas nome, e tem chave primaria no id
 class EspacoCafe(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     nome_espaco = db.Column(db.String(40), nullable = False)
@@ -12,6 +13,8 @@ class EspacoCafe(db.Model):
             "id": self.id,
             "nome_espaco": self.nome_espaco,
         }
+
+#Classe Sala, possui nome_sala e lotação, tem chave primaria no id
 
 class Sala(db.Model):
     id = db.Column(db.Integer,primary_key=True)
@@ -26,6 +29,8 @@ class Sala(db.Model):
             "nome_sala": self.nome_sala,
             "lotacao": self.lotacao,
         }
+
+#Classe Pessoa, possui ligação com as duas outras classes, usando o cpf como chave primária.
 
 class Pessoa(db.Model):
     cpf = db.Column(db.String(10),primary_key=True)
@@ -60,61 +65,6 @@ class Pessoa(db.Model):
             "espacocafe_dois":self.espacocafe_dois.json(),
         }
 
+#aqui cria-se o bd
 if __name__ == "__main__":
     db.create_all()
-    espaco1 = EspacoCafe(nome_espaco="cafe com leite")
-    espaco2 = EspacoCafe(nome_espaco="cafe preto")
-    espaco3 = EspacoCafe(nome_espaco="suco de laranja")
-    espaco4 = EspacoCafe(nome_espaco="suco de uva")
-    db.session.add(espaco1)
-    db.session.add(espaco2)
-    db.session.add(espaco3)
-    db.session.add(espaco4)
-    db.session.commit()
-    sala1 = Sala(nome_sala="Sala 1")
-    sala2 = Sala(nome_sala="Sala 2")
-    sala3 = Sala(nome_sala="Sala 3")
-    sala4 = Sala(nome_sala="Sala 4")
-    db.session.add(sala1)
-    db.session.add(sala2)
-    db.session.add(sala3)
-    db.session.add(sala4)
-    db.session.commit()
-"""    
-    db.create_all()
-    
-    espaco1 = EspacoCafe(nome_espaco="cafe com leite")
-    espaco2 = EspacoCafe(nome_espaco="cafe preto")
-    espaco3 = EspacoCafe(nome_espaco="suco de laranja")
-    espaco4 = EspacoCafe(nome_espaco="suco de uva")
-    db.session.add(espaco1)
-    db.session.add(espaco2)
-    db.session.add(espaco3)
-    db.session.add(espaco4)
-    db.session.commit()
-    print(EspacoCafe.query.get(3))
-
-    sala1 = Sala(nome_sala="Sala 1")
-    sala2 = Sala(nome_sala="Sala 2")
-    sala3 = Sala(nome_sala="Sala 3")
-    sala4 = Sala(nome_sala="Sala 4")
-    db.session.add(sala1)
-    db.session.add(sala2)
-    db.session.add(sala3)
-    db.session.add(sala4)
-    db.session.commit()
-
-    print(Sala.query.get(4))
-
-    pessoa1 = Pessoa(cpf="1234567890",nome_pessoa="Amora",sobrenome="Amarantis",sala_um_id=1, sala_dois_id=2,espacocafe_um_id=1,espacocafe_dois_id=2)
-    pessoa2 = Pessoa(cpf="1234567891",nome_pessoa="Bernardo",sobrenome="Bastos",sala_um_id=2, sala_dois_id=1,espacocafe_um_id=2,espacocafe_dois_id=1)
-    pessoa3 = Pessoa(cpf="1234567892",nome_pessoa="Carlos",sobrenome="Castro",sala_um_id=3, sala_dois_id=4,espacocafe_um_id=3,espacocafe_dois_id=4)
-    pessoa4 = Pessoa(cpf="1234567893",nome_pessoa="Diane",sobrenome="Diavollo",sala_um_id=4, sala_dois_id=3,espacocafe_um_id=4,espacocafe_dois_id=3)
-    db.session.add(pessoa1)
-    db.session.add(pessoa2)
-    db.session.add(pessoa3)
-    db.session.add(pessoa4)
-    db.session.commit()
-    print(Pessoa.query.get("1234567890"))
-
-"""
