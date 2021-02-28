@@ -122,6 +122,5 @@ card-deck{
   #titulo{
       text-align: center;
       margin-top: 2%;
-      color: cornsilk;
-      background-color: rgb(39, 39, 39);
+      color: rgb(80, 80, 80);
   }

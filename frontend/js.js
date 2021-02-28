@@ -179,12 +179,13 @@ function verificar(){
         dataType: 'json',
         success: lendoresposta,
         error: function(problema) {
-            alert("erro, verifique backend  aaaaaaaaaa");
+            alert("erro, verifique backend");
         }
     });
     function lendoresposta (escolhasalas) {
+        if (document.getElementById('testesalalabel')==null){
         if (escolhasalas == 'salas diferentes'){
-            conteudo="<label for='sala1id' onClick=chamarsala('sala1id','Sala',1,'nenhum');><alert style='color:red;'>Clique em mim para carregar os dados das salas!</alert></label>"+
+            conteudo="<label id='testesalalabel' for='sala1id' onClick=chamarsala('sala1id','Sala',1,'nenhum');><alert style='color:red;'>Clique em mim para carregar os dados das salas!</alert></label>"+
                         "<p>Salas Disponiveis - 1</p>"+            
                         "<select class='form-control' id='sala1id' value='sala1id' aria-describedby='sala1id' placeholder='sala1id' onClick=chamarsala('sala2id','Sala',2,'salasdiferentes'); >"+
                         '</select>'+
@@ -198,7 +199,7 @@ function verificar(){
             alert("Pegando dados");
         }
         if (escolhasalas == 'salas iguais'){
-            conteudo="<label for='sala1id' onClick=chamarsala('sala1id','Sala',1,'nenhum');><alert style='color:red;'>Clique em mim para carregar os dados das salas!</alert></label>"+
+            conteudo="<label id='testesalalabel' for='sala1id' onClick=chamarsala('sala1id','Sala',1,'nenhum');><alert style='color:red;'>Clique em mim para carregar os dados das salas!</alert></label>"+
                     "<p>Salas Disponiveis - 1</p>"+            
                     "<select class='form-control' id='sala1id' value='sala1id' aria-describedby='sala1id' placeholder='sala1id' onClick=chamarsala('sala2id','Sala',2,'salasiguais'); >"+
                         '</select>'+
@@ -209,7 +210,7 @@ function verificar(){
                         '</div>'
             $('#teste').append( $(conteudo));
             alert("Pegando dados");
-        }
+        }}
 }
 }
 
@@ -429,7 +430,7 @@ $(document).on("click",".salasespacosconferir",function(){
         dataType: 'json',
         success: salasespacosconferir,
         error: function(problema) {
-            alert("erro, verifique backend  aaaaaaaaaa");
+            alert("erro, verifique backend");
         }
     });
     function salasespacosconferir(pessoas) {
@@ -466,7 +467,7 @@ $(document).on("click",".salasconferir",function(){
         dataType: 'json',
         success: salasconferir,
         error: function(problema) {
-            alert("erro, verifique backend  aaaaaaaaaa");
+            alert("erro, verifique backend");
         }
     });
     function salasconferir(pessoas) {
