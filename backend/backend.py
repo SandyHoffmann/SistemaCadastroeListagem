@@ -225,59 +225,60 @@ def conferir_sala_nova():
         lotacaototal=0
         pessoasreversas = Pessoa.query.all()
         totalsalas = Sala.query.all()
-        pessoasreversas.reverse()
-        totalsalas.reverse()
-        listanumeroslotacao=[]
-        #nesse loop eu consigo a lotação de todas as salas
-        for sala in totalsalas:
-            lotacaototal+=sala.lotacao
-            listanumeroslotacao.append(sala.lotacao)
-        #com isso eu coloco elas em uma lista com maiores lotações e menores
-        listamaioresnumeros = sorted(listanumeroslotacao,reverse=True)
-        listamenoresnumeros = sorted(listanumeroslotacao)
-        #aqui eu vejo o quanto eu tenho que ter por sala
-        minimosala = min(listamenoresnumeros[1:])
-        maximosala = max(listamaioresnumeros)
-        #se a lotação total for menor do que o numero de salas, não temo o porquê de redistribuir
-        #então a sala vai ser registrada com 0 lotação
-        if lotacaototal<len(totalsalas):
-            pass
-        else:
-            #aqui eu sigo as condições afim de fazer com que os itens da menor lista fiquem com a lotação minima necessária
-            # e que os que tem a lotação maior distribuam para os menores.          
-            for y in listamaioresnumeros:
-                for z in range(lotacaototal):
-                    salay=Sala.query.filter_by(id=z,lotacao=y).first()
-                    if salay:
-                        if salay.lotacao > minimosala:
-                            for x in listamenoresnumeros:
-                                salax=Sala.query.filter_by(lotacao=x).first()
-                                if salax:
-                                    for pessoa in pessoasreversas:
-                                        if salax.lotacao < minimosala:
-                                            if pessoa.sala_um_id == salay.id or pessoa.sala_dois_id ==salay.id:
-                                                if pessoa.sala_um_id == pessoa.sala_dois_id:
-                                                    salay.lotacao-=1
-                                                    salax.lotacao+=1
-                                                    pessoa.sala_um=salax      
-                                                    pessoa.sala_dois=salax
-                                                    pessoa.sala_um_id=salax.id       
-                                                    pessoa.sala_dois_id=salax.id       
-                                                    db.session.commit()
+        if len(totalsalas)>1:
+            pessoasreversas.reverse()
+            totalsalas.reverse()
+            listanumeroslotacao=[]
+            #nesse loop eu consigo a lotação de todas as salas
+            for sala in totalsalas:
+                lotacaototal+=sala.lotacao
+                listanumeroslotacao.append(sala.lotacao)
+            #com isso eu coloco elas em uma lista com maiores lotações e menores
+            listamaioresnumeros = sorted(listanumeroslotacao,reverse=True)
+            listamenoresnumeros = sorted(listanumeroslotacao)
+            #aqui eu vejo o quanto eu tenho que ter por sala
+            minimosala = min(listamenoresnumeros[1:])
+            maximosala = max(listamaioresnumeros)
+            #se a lotação total for menor do que o numero de salas, não temo o porquê de redistribuir
+            #então a sala vai ser registrada com 0 lotação
+            if lotacaototal<len(totalsalas):
+                pass
+            else:
+                #aqui eu sigo as condições afim de fazer com que os itens da menor lista fiquem com a lotação minima necessária
+                # e que os que tem a lotação maior distribuam para os menores.          
+                for y in listamaioresnumeros:
+                    for z in range(lotacaototal):
+                        salay=Sala.query.filter_by(id=z,lotacao=y).first()
+                        if salay:
+                            if salay.lotacao > minimosala:
+                                for x in listamenoresnumeros:
+                                    salax=Sala.query.filter_by(lotacao=x).first()
+                                    if salax:
+                                        for pessoa in pessoasreversas:
+                                            if salax.lotacao < minimosala:
+                                                if pessoa.sala_um_id == salay.id or pessoa.sala_dois_id ==salay.id:
+                                                    if pessoa.sala_um_id == pessoa.sala_dois_id:
+                                                        salay.lotacao-=1
+                                                        salax.lotacao+=1
+                                                        pessoa.sala_um=salax      
+                                                        pessoa.sala_dois=salax
+                                                        pessoa.sala_um_id=salax.id       
+                                                        pessoa.sala_dois_id=salax.id       
+                                                        db.session.commit()
 
-                                                elif pessoa.sala_um_id==salay.id:
-                                                    salay.lotacao-=1
-                                                    salax.lotacao+=1
-                                                    pessoa.sala_um= salax
-                                                    pessoa.sala_um_id=salax.id       
-                                                    db.session.commit()
+                                                    elif pessoa.sala_um_id==salay.id:
+                                                        salay.lotacao-=1
+                                                        salax.lotacao+=1
+                                                        pessoa.sala_um= salax
+                                                        pessoa.sala_um_id=salax.id       
+                                                        db.session.commit()
 
-                                                elif pessoa.sala_dois_id==salay.id:
-                                                    salay.lotacao-=1
-                                                    salax.lotacao+=1
-                                                    pessoa.sala_dois = salax
-                                                    pessoa.sala_dois_id=salax.id       
-                                                    db.session.commit()
+                                                    elif pessoa.sala_dois_id==salay.id:
+                                                        salay.lotacao-=1
+                                                        salax.lotacao+=1
+                                                        pessoa.sala_dois = salax
+                                                        pessoa.sala_dois_id=salax.id       
+                                                        db.session.commit()
 
 #Essa função inclui o espaço do café
 @app.route('/incluir_espaco_cafe', methods=['POST'])
