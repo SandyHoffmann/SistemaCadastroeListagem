@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Cadastro de Pessoas</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+<html>
+<head>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@100&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+</head>
+<body>
+    <main class="conteiner" id="formcadastro">
+    <form action="/incluir_pessoa" method="post">
+        <fieldset>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Nome da Sala</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nome_sala" placeholder="Nome da Sala">
+                </div>
+            </div>
+            <p>A lotação inicial de uma sala é de 0 pessoas.</p>
+            <button type="button" class="btn btn-primary" id="incluir_sala" onClick="registrar_sala();" >Cadastrar a Sala</button>
+        </fieldset>
+    </form>
+</main>
+
+<footer id="sticky-footer" class="py-4 text-white-50">
+    <div class="container text-center">
+    <small>Copyright &copy; Mundo Animal</small>
+    </div>
+</footer>
+<script src="js.js"></script>
+</body>
+</html>
+
+
+
+

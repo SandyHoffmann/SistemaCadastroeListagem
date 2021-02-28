@@ -61,10 +61,25 @@ class Pessoa(db.Model):
         }
 
 if __name__ == "__main__":
-    sala = Sala(nome_sala="Sala 6",lotacao=1)
-    db.session.add(sala)
+    db.create_all()
+    espaco1 = EspacoCafe(nome_espaco="cafe com leite")
+    espaco2 = EspacoCafe(nome_espaco="cafe preto")
+    espaco3 = EspacoCafe(nome_espaco="suco de laranja")
+    espaco4 = EspacoCafe(nome_espaco="suco de uva")
+    db.session.add(espaco1)
+    db.session.add(espaco2)
+    db.session.add(espaco3)
+    db.session.add(espaco4)
     db.session.commit()
-
+    sala1 = Sala(nome_sala="Sala 1")
+    sala2 = Sala(nome_sala="Sala 2")
+    sala3 = Sala(nome_sala="Sala 3")
+    sala4 = Sala(nome_sala="Sala 4")
+    db.session.add(sala1)
+    db.session.add(sala2)
+    db.session.add(sala3)
+    db.session.add(sala4)
+    db.session.commit()
 """    
     db.create_all()
     

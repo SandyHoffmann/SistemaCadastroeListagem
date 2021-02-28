@@ -1,0 +1,118 @@
+body, html {
+    height: 100%;
+    font-family: 'Cabin', sans-serif;
+    background-color: #f7faff;
+    background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
+  }
+
+#containerhome{
+    background-image: url('imagens/backgroundhome.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;    
+    height: 100%;
+    font-family: 'Cabin', sans-serif;
+    text-align: center;
+    color: aliceblue;
+
+}
+#containerhome2{
+    background-color: #000000;
+    background-image: url("https://www.transparenttextures.com/patterns/corrugation.png");
+    font-family: 'Cabin', sans-serif;
+    text-align: center;
+    color: aliceblue;
+}
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+#listar{
+    color: black;
+    text-align: center;
+
+}
+#imgpc{
+    width: 20%;
+}
+
+nav{
+    background-image: url("https://www.transparenttextures.com/patterns/blu-stripes.png");
+
+}
+card-deck{
+    width: 230px;
+}
+.card img{
+    width: 230px;
+    align-self: center;
+
+}
+.card-deck{
+    margin-top: 10px;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: .5rem;
+}
+#blocolistar{
+    background-color: transparent;
+}
+#listar{
+    background-color: #f7faff;
+    background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+}
+#blocolistarsalas{
+    background-color: transparent;
+}
+#listasala{
+    background-color: #ece9e9;
+
+}
+
+#espacocafe{
+    background-color: #ece9e9;
+
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }

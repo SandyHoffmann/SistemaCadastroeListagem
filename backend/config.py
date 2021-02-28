@@ -7,7 +7,7 @@ import json
 from PIL import Image
 import base64
 import secrets
-
+import math
 
 app = Flask(__name__) 
 CORS(app)
