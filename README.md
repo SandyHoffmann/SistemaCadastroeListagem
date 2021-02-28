@@ -6,10 +6,10 @@ Esse projeto tem como motivação fazer um site que possa cadastrar e listar dad
 ## 🚀 Em que consiste o site?
 
 O site de treinamentos consiste em uma ficticia empresa que faz treinamentos, e que esta querendo organizar seus participantes em salas, e espaços de café.
-Para conseguir organizar os participantes de uma forma organizada, foram impostas algumas normas:
+Para conseguir organizar os participantes, foram impostas algumas normas:
 
 * :star: A diferença entre a lotação das salas deve ser de no máximo 1 pessoa.
-* :star: Em cada fase as pessoas devem ser legistradas em espaços de café diferentes.
+* :star: Em cada fase as pessoas devem ser registradas em espaços de café diferentes.
 
 O funcionamento do site ocorre com a utilização das bibliotecas Python SQLAlchemy  e Flask, com o auxilio do js.
 
@@ -31,7 +31,7 @@ def listar_salas():
 ```
 <i>Exemplo de Rota, encontrada no backend.py</i>
 
-Há tambem a permanencia de dados, que ficam registrados no banco de dados intitulado como evento.db.
+Há tambem a persistência de dados, que ficam registrados no banco de dados intitulado como evento.db.
 A criação de Tabelas desse bd é feita por meio do SqlAlchemy, que utiliza da classe Model.
 
 ```
@@ -65,6 +65,10 @@ $(function(){
     });
 ```
 <i>Exemplo de função de js, encontrada no js.js</i>
+
+### 💻 Separação de Camadas
+
+O site é dividido em backend (que possui as configurações, o servidor routes e o model) e em frontend (as páginas html, e o arquivo js).
 
 ### 📋 Como Executar o Programa
 
