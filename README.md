@@ -1,5 +1,4 @@
- <img alt="GitHub language count" src="https://img.shields.io/badge/python-v3.7-purple"><img alt="GitHub language count" src="https://img.shields.io/badge/flask-v1.1.1-purple">
-
+ <img alt="GitHub language count" src="https://img.shields.io/badge/python-v3.7-purple"><img alt="GitHub language count" src="https://img.shields.io/badge/flask-v1.1.1-purple"><img alt="GitHub language count" src="https://img.shields.io/badge/Code-Open%20Source-purple">
 <h1>Sistema Cadastro e Listagem - Treinamento</h1>
 
 Esse projeto tem como motivação fazer um site que possa cadastrar e listar dados, respeitando a uma série de normas, utilizando python, javascript e html.
@@ -93,4 +92,4 @@ pytest
 
 ## 📄 Licença
 
-Este projeto está sob a licença (sua licença).
+Este projeto está sob a licença de Código Aberto.
