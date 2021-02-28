@@ -89,7 +89,7 @@ pytest
 
 ## ✒️ Autora
 
-* **Sandy Hoffmann** - *Programação* - [umdesenvolvedor](https://github.com/SandyHoffmann)
+* **Sandy Hoffmann** - *Programação* - [Sandy Hoffmann](https://github.com/SandyHoffmann)
 
 ## 📄 Licença
 
