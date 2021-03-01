@@ -18,7 +18,7 @@ O funcionamento do site ocorre com a utilização das bibliotecas Python SQLAlch
 
 Tem-se então um servidor rodando a aplicação, por meio de rotas que desencadeiam as funcionalidades do site:
 
-```~~~python
+~~~python
 
 #Rota para listar as salas, conversando com o JS
 @app.route("/listar/Sala")
@@ -29,13 +29,13 @@ def listar_salas():
     resposta.headers.add("Access-Control-Allow-Origin", "*") 
     return resposta
 
-```
+~~~
 <i>Exemplo de Rota, encontrada no backend.py</i>
 
 Há tambem a persistência de dados, que ficam registrados no banco de dados intitulado como evento.db.
 A criação de Tabelas desse bd é feita por meio do SqlAlchemy, que utiliza da classe Model.
 
-```~~~python
+~~~python
 
 #Classe Espaco café, possui apenas nome, e tem chave primaria no id
 class EspacoCafe(db.Model):
@@ -49,12 +49,12 @@ class EspacoCafe(db.Model):
             "id": self.id,
             "nome_espaco": self.nome_espaco,
         }
-```
+~~~
 <i>Exemplo de Tabela, encontrada no model.py</i>
 
 E por fim, para auxiliar a conexão entre as páginas html e o backend (em python), tem-se o js, que chama as rotas, pega os dados, e encaminha para o html.
 
-```~~~python
+~~~python
 
 $(function(){ 
     $.ajax({
@@ -66,7 +66,7 @@ $(function(){
             alert("Deu erro");
         }
     });
-```
+~~~
 <i>Exemplo de função de js, encontrada no js.js</i>
 
 ### 💻 Separação de Camadas
